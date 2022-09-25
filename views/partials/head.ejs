@@ -1,0 +1,268 @@
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>web | <%= title%></title>
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+  />
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Dancing+Script"
+  />
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Archivo"
+  />
+  <link rel="stylesheet" href="/styles.css" />
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    function cal_sgpa(semester) {
+      if (check_sgpa() == 0) return;
+
+      switch (semester) {
+        case "1st and 2nd sem (physics group)":
+          first_second_phy();
+          break;
+        case "1st and 2nd sem (chemistry group)":
+          first_second_chem();
+          break;
+        case "3rd and 4th Semester":
+          third_fourth();
+          break;
+        case "5th Semester":
+          fifth();
+          break;
+        case "6th Semester":
+          sixth();
+          break;
+        case "7th Semester":
+          seventh();
+          break;
+        case "8th Semester":
+          eigth();
+          break;
+      }
+    }
+
+    function check_sgpa()
+     {
+      let c = 1;
+      for (var i = 0; i < 10; i++)
+       {
+        var ele = document.getElementById(i);
+        var pat1 = /[a-zA-Z]/;
+        //  if (ele.value == "")
+        //   ele.value=0
+        if (document.body.contains(ele))
+         {
+          var x = document.getElementById("err" + i);
+         
+          if (ele.value == "" || ele.value.match(pat1)) 
+          {
+            x.textContent = "should contain a number";
+            ele.style.borderColor = "red";
+            c = 0;
+          }
+          
+          else if (ele.value < 0 || ele.value > 100) {
+            ele.style.borderColor = "red";
+            x.textContent = "marks between 0 and 100";
+            c = 0;
+          } else {
+            x.textContent = "";
+            ele.style.border = "revert";
+          }
+        }
+      }
+      return c;
+    }
+
+    function check_cgpa() {
+      let c = 1;
+      console.log("check sgpa");
+      for (var i = 1; i <= 8; i++) {
+        var ele = document.getElementById("c1s" + i);
+        var pat1 = /[a-zA-Z]/;
+        if (document.body.contains(ele)) {
+          var x = document.getElementById("err" + i);
+          if (ele.value == "" || ele.value.match(pat1)) {
+            x.textContent = "should contain a number";
+            ele.style.borderColor = "red";
+            c = 0;
+          } else if (ele.value < 0 || ele.value > 10) {
+            ele.style.borderColor = "red";
+            x.textContent = "cgpa between 0 and 10";
+            c = 0;
+          } else {
+            x.textContent = "";
+            ele.style.border = "revert";
+          }
+        }
+      }
+      return c;
+    }
+
+    function first_second_phy() {
+      var x1 = grade_point(Number(document.getElementById("1").value)) * 4;
+      var x2 = grade_point(Number(document.getElementById("2").value)) * 4;
+      var x3 = grade_point(Number(document.getElementById("3").value)) * 3;
+      var x4 = grade_point(Number(document.getElementById("4").value)) * 3;
+      var x5 = grade_point(Number(document.getElementById("5").value)) * 3;
+      var x6 = grade_point(Number(document.getElementById("6").value)) * 1;
+      var x7 = grade_point(Number(document.getElementById("7").value)) * 1;
+      var x8 = grade_point(Number(document.getElementById("8").value)) * 1;
+      var avg = (x1 + x2 + x3 + x4 + x5 + x6 + x7 + x8) / 20;
+      var y = document.getElementById("s1sgpa");
+      y.value = avg.toFixed(2);
+    }
+    function first_second_chem() {
+      var x1 = grade_point(Number(document.getElementById("1").value)) * 4;
+      var x2 = grade_point(Number(document.getElementById("2").value)) * 4;
+      var x3 = grade_point(Number(document.getElementById("3").value)) * 3;
+      var x4 = grade_point(Number(document.getElementById("4").value)) * 3;
+      var x5 = grade_point(Number(document.getElementById("5").value)) * 3;
+      var x6 = grade_point(Number(document.getElementById("6").value)) * 1;
+      var x7 = grade_point(Number(document.getElementById("7").value)) * 1;
+      var x8 = grade_point(Number(document.getElementById("8").value)) * 1;
+      var avg = (x1 + x2 + x3 + x4 + x5 + x6 + x7 + x8) / 20;
+      var y = document.getElementById("s1sgpa");
+      y.value = avg.toFixed(2);
+    }
+    function third_fourth() {
+      var x1 = grade_point(Number(document.getElementById("1").value)) * 3;
+      var x2 = grade_point(Number(document.getElementById("2").value)) * 4;
+      var x3 = grade_point(Number(document.getElementById("3").value)) * 3;
+      var x4 = grade_point(Number(document.getElementById("4").value)) * 3;
+      var x5 = grade_point(Number(document.getElementById("5").value)) * 3;
+      var x6 = grade_point(Number(document.getElementById("6").value)) * 3;
+      var x7 = grade_point(Number(document.getElementById("7").value)) * 2;
+      var x8 = grade_point(Number(document.getElementById("8").value)) * 2;
+      var x9 = grade_point(Number(document.getElementById("9").value)) * 1;
+      var avg = (x1 + x2 + x3 + x4 + x5 + x6 + x7 + x8 + x9) / 24;
+      var y = document.getElementById("s1sgpa");
+      y.value = avg.toFixed(2);
+    }
+    function fifth() {
+      var x1 = grade_point(Number(document.getElementById("1").value)) * 3;
+      var x2 = grade_point(Number(document.getElementById("2").value)) * 4;
+      var x3 = grade_point(Number(document.getElementById("3").value)) * 4;
+      var x4 = grade_point(Number(document.getElementById("4").value)) * 3;
+      var x5 = grade_point(Number(document.getElementById("5").value)) * 3;
+      var x6 = grade_point(Number(document.getElementById("6").value)) * 3;
+      var x7 = grade_point(Number(document.getElementById("7").value)) * 2;
+      var x8 = grade_point(Number(document.getElementById("8").value)) * 2;
+      var x9 = grade_point(Number(document.getElementById("9").value)) * 1;
+      var avg = (x1 + x2 + x3 + x4 + x5 + x6 + x7 + x8 + x9) / 25;
+      var y = document.getElementById("s1sgpa");
+      y.value = avg.toFixed(2);
+    }
+    function sixth() {
+      var x1 = grade_point(Number(document.getElementById("1").value)) * 4;
+      var x2 = grade_point(Number(document.getElementById("2").value)) * 4;
+      var x3 = grade_point(Number(document.getElementById("3").value)) * 4;
+      var x4 = grade_point(Number(document.getElementById("4").value)) * 3;
+      var x5 = grade_point(Number(document.getElementById("5").value)) * 3;
+      var x6 = grade_point(Number(document.getElementById("6").value)) * 2;
+      var x7 = grade_point(Number(document.getElementById("7").value)) * 2;
+      var x8 = grade_point(Number(document.getElementById("8").value)) * 2;
+      var avg = (x1 + x2 + x3 + x4 + x5 + x6 + x7 + x8) / 24;
+      var y = document.getElementById("s1sgpa");
+      y.value = avg.toFixed(2);
+    }
+    function seventh() {
+      var x1 = grade_point(Number(document.getElementById("1").value)) * 4;
+      var x2 = grade_point(Number(document.getElementById("2").value)) * 4;
+      var x3 = grade_point(Number(document.getElementById("3").value)) * 3;
+      var x4 = grade_point(Number(document.getElementById("4").value)) * 3;
+      var x5 = grade_point(Number(document.getElementById("5").value)) * 3;
+      var x6 = grade_point(Number(document.getElementById("6").value)) * 2;
+      var x7 = grade_point(Number(document.getElementById("7").value)) * 1;
+      var avg = (x1 + x2 + x3 + x4 + x5 + x6 + x7) / 20;
+      var y = document.getElementById("s1sgpa");
+      y.value = avg.toFixed(2);
+    }
+    function eigth() {
+      var x1 = grade_point(Number(document.getElementById("1").value)) * 3;
+      var x2 = grade_point(Number(document.getElementById("2").value)) * 3;
+      var x3 = grade_point(Number(document.getElementById("3").value)) * 8;
+      var x4 = grade_point(Number(document.getElementById("4").value)) * 1;
+      var x5 = grade_point(Number(document.getElementById("5").value)) * 3;
+      var avg = (x1 + x2 + x3 + x4 + x5) / 18;
+      var y = document.getElementById("s1sgpa");
+      y.value = avg.toFixed(2);
+    }
+    function grade_point(num) {
+      if (num >= 90 && num <= 100) return 10;
+      else if (num >= 80 && num <= 90) return 9;
+      else if (num >= 70 && num <= 80) return 8;
+      else if (num >= 60 && num <= 70) return 7;
+      else if (num >= 50 && num <= 60) return 6;
+      else if (num >= 40 && num <= 50) return 5;
+      else if (num >= 30 && num <= 40) return 4;
+      else if (num >= 20 && num <= 30) return 3;
+      else if (num >= 10 && num <= 20) return 2;
+      else return 1;
+    }
+    function cal_cgpa() {
+      var y = document.getElementById("c1cgpa");
+      y.value = "";
+      if (check_cgpa() == 0) {
+        return;
+      }
+      var x1 = Number(document.getElementById("c1s1").value) * 20;
+      var x2 = Number(document.getElementById("c1s2").value) * 20;
+      var x3 = Number(document.getElementById("c1s3").value) * 24;
+      var x4 = Number(document.getElementById("c1s4").value) * 24;
+      var x5 = Number(document.getElementById("c1s5").value) * 25;
+      var x6 = Number(document.getElementById("c1s6").value) * 24;
+      var x7 = Number(document.getElementById("c1s7").value) * 20;
+      var x8 = Number(document.getElementById("c1s8").value) * 18;
+      var total = 175;
+      if (x1 == 0) total -= 20;
+      if (x2 == 0) total -= 20;
+      if (x3 == 0) total -= 24;
+      if (x4 == 0) total -= 24;
+      if (x5 == 0) total -= 25;
+      if (x6 == 0) total -= 24;
+      if (x7 == 0) total -= 20;
+      if (x8 == 0) total -= 18;
+      var avg = (x1 + x2 + x3 + x4 + x5 + x6 + x7 + x8) / total;
+
+      y.value = avg.toFixed(2);
+    }
+    function reset_cgpa() {
+      for (var i = 1; i <= 8; i++) {
+        var ele = document.getElementById("c1s" + i);
+        ele.value = "";
+        document.getElementById("err" + i).textContent = "";
+        ele.style.border = "revert";
+      }
+
+      // document.getElementById("c1s1").value = "";
+      // document.getElementById("c1s2").value = "";
+      // document.getElementById("c1s3").value = "";
+      // document.getElementById("c1s4").value = "";
+      // document.getElementById("c1s5").value = "";
+      // document.getElementById("c1s6").value = "";
+      // document.getElementById("c1s7").value = "";
+      // document.getElementById("c1s8").value = "";
+      // document.getElementById("c1cgpa").value = "";
+      // document.getElementById("s1sgpa").value = " ";
+    }
+    function reset_sgpa() {
+      for (var i = 0; i < 10; i++) {
+        var ele = document.getElementById(i);
+        if (document.body.contains(ele)) {
+          ele.value = "";
+          document.getElementById("err" + i).textContent = "";
+          ele.style.border = "revert";
+        }
+      }
+      document.getElementById("s1sgpa").value = " ";
+    }
+  </script>
+</head>
